@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/09 19:31:08 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/09 22:07:34 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,22 +14,26 @@
 
 int	main(int ac, char **av)
 {
-	int	*input;
-	int	i;
+	int		*input;
+	int		i;
 
 	input = malloc(ac * (sizeof(int)));
-	i = 1;
-	if (ac < 1)
+	i = 0;
+	printf("long max = %ld\n", LONG_MAX);
+	if (parser(av))
 	{
-		while (i < ac)
-		{
-			input[i] = ft_atoi(av[i]);
-			i++;
-		}
-		input[i] == 0;
+		write(1, "Error\n", 6);
+		return (1);
 	}
-	if (check_input)
-		return (free(input), 1);
+	while (i < ac - 1)
+	{
+		input[i] = ft_atoi(av[i + 1]);
+		i++;
+	}
+	input[i] == 0;
+	check_repeat(input);
+	free(input);
 	return (0);
-
 }
+
+//when parser complete just need to call it, remove if condition
