@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/09 22:07:34 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/09 22:11:21 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -19,7 +19,6 @@ int	main(int ac, char **av)
 
 	input = malloc(ac * (sizeof(int)));
 	i = 0;
-	printf("long max = %ld\n", LONG_MAX);
 	if (parser(av))
 	{
 		write(1, "Error\n", 6);
