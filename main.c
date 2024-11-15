@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,32 +6,27 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/09 22:11:21 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:32:49 by lpittet          ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "pushswap.h"
 
 int	main(int ac, char **av)
 {
-	int		*input;
+	t_stack	stack_a;
 	int		i;
 
-	input = malloc(ac * (sizeof(int)));
-	i = 0;
-	if (parser(av))
-	{
-		write(1, "Error\n", 6);
+	i  = 0;
+	if (ac == 1)
 		return (1);
-	}
-	while (i < ac - 1)
+	stack_a = parser(av);
+	while (i < stack_a.size)
 	{
-		input[i] = ft_atoi(av[i + 1]);
+		printf("input i = %d\n", stack_a.content[i]);
 		i++;
 	}
-	input[i] == 0;
-	check_repeat(input);
-	free(input);
+	free(stack_a.content);
 	return (0);
 }
 
