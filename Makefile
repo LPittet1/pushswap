@@ -4,9 +4,9 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = main.c parser.c utils.c
+SRCS = main.c parser.c utils.c dblist.c
 
-LIBFT_PATH = libft
+LIBFT_PATH = libft1
 
 
 LIBFT = $(LIBFT_PATH)/libft.a

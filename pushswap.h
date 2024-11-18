@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/15 13:57:50 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/18 13:08:09 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,25 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "libft1/includes/libft.h"
 # include <limits.h>
 # include <stdio.h>
 
 typedef struct s_stack
 {
-	char	name;
-	int		*content;
-	int		size;
+	struct s_stack	*prev;
+	int				content;
+	struct s_stack	*next;
 }	t_stack;
 
 // parser.c
-t_stack	parser(char **av);
+t_stack	*parser(char **av);
 
 // utils.c
-int	*ft_realloc(int *start, int size_diff);
+
+// dblst.c
+t_stack	*dblstnew(int content);
+t_stack	*dblstadd(t_stack *head, int content);
+void	dblstdelete(t_stack *head);
 
 #endif

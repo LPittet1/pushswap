@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/15 14:32:49 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:30:21 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 int	main(int ac, char **av)
 {
-	t_stack	stack_a;
-	int		i;
-
-	i  = 0;
+	t_stack	*stack_a;
+	t_stack *temp;
+	
 	if (ac == 1)
 		return (1);
+	printf("%s\n", av[0]);
 	stack_a = parser(av);
-	while (i < stack_a.size)
+	temp = stack_a;
+	while (stack_a->next != temp)
 	{
-		printf("input i = %d\n", stack_a.content[i]);
-		i++;
+		printf("input i = %d\n", stack_a->content);
+		stack_a = stack_a->next;
 	}
-	free(stack_a.content);
+	dblstdelete(stack_a);
 	return (0);
 }
 
