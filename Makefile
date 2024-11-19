@@ -33,6 +33,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_PATH)
+	clear
 
 re: fclean all
 	clear

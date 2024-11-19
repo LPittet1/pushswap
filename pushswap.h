@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/18 13:08:09 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/19 08:38:17 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_stack
 {
 	struct s_stack	*prev;
 	int				content;
+	ssize_t			size;
+	char			name;
 	struct s_stack	*next;
 }	t_stack;
 

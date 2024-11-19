@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 08:25:29 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/18 14:18:04 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/19 09:42:49 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	dblstdelete(t_stack *head)
 	t_stack	*temp;
 
 	temp = head;
-	head->prev->next = NULL;
+	if (head->prev)
+		head->prev->next = NULL;
 	while (temp->next)
 	{
 		temp = temp->next;
