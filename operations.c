@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:06:49 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/19 14:29:36 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/19 14:47:33 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ t_stack *rev_rotate(t_stack *stack)
 
 void push(t_stack **stack_1, t_stack **stack_2)
 {
+	t_stack	*temp;
+
+	temp = *stack_1;
 	(*stack_1)->prev->next = (*stack_1)->next;
 	(*stack_1)->next->prev = (*stack_1)->prev;
 	(*stack_1)->prev = NULL;
@@ -55,5 +58,9 @@ void push(t_stack **stack_1, t_stack **stack_2)
 		(*stack_2)->prev = *stack_1;
 		*stack_2 = rev_rotate(*stack_2);
 	}
-
+	(*stack_1) = temp->next;
+	
 }
+
+// need to change my add to add_back and create add_front for push test afterwards
+// everything is double pointer

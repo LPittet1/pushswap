@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/19 14:05:58 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/19 14:41:20 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	main(int ac, char **av)
 			break ;
 	}
 	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b);
 	printf("===PUSH DONE===\n");
 	temp = stack_a;
+	printf("stack a = %d\n", temp->content);
 	while (temp->next)
 	{
 		printf("stack a = %d\n", temp->content);
@@ -43,6 +43,7 @@ int	main(int ac, char **av)
 			break ;
 	}
 	temp2 = stack_b;
+	printf("stack b = %d\n", temp2->content);
 	while (temp2->next)
 	{
 		printf("stack b = %d\n", temp2->content);
