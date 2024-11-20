@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:27:27 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/19 11:40:44 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:18:42 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	void	parsing_error(t_stack *stack, char  **tab)
 	i = 0;
 	while (tab[i])
 		i++;
-	ft_free(tab, i);
+	ft_free_tab(tab, i);
 	if (stack)
 		dblstdelete(stack);
 	ft_putendl_fd("Error", 2);
@@ -95,12 +95,12 @@ t_stack	*parser(char **av)
 		while (tab[j])
 		{
 			if (check_all(tab[j], stack_a) == 0)
-				stack_a = dblstadd(stack_a, ft_atoi(tab[j]));
+				stack_a = dblstadd_back(stack_a, ft_atoi(tab[j]));
 			else
 				parsing_error(stack_a, tab);
 			j++;
 		}
-		ft_free(tab, j);
+		ft_free_tab(tab, j);
 		i++;
 	}
 	stack_a->size = i;

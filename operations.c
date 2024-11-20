@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:06:49 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/19 14:47:33 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:27:10 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,45 +21,23 @@ void swap(t_stack *stack)
 	stack->next->content = temp;
 }
 
-t_stack *rotate(t_stack *stack)
+void	rotate(t_stack **stack)
 {
-	return (stack->next);
+	(*stack) = (*stack)->next;
 }
 
-t_stack *rev_rotate(t_stack *stack)
+void	rev_rotate(t_stack **stack)
 {
-	return (stack->prev);
+	(*stack) = (*stack)->prev;
 }
 
 void push(t_stack **stack_1, t_stack **stack_2)
 {
-	t_stack	*temp;
-
-	temp = *stack_1;
-	(*stack_1)->prev->next = (*stack_1)->next;
+	(*stack_2) = dblstadd_front((*stack_2), (*stack_1)->content);
 	(*stack_1)->next->prev = (*stack_1)->prev;
-	(*stack_1)->prev = NULL;
-	(*stack_1)->next = NULL;
-	if (!(*stack_2))
-		*stack_2 = *stack_1;
-	else if (!(*stack_2)->next)
-	{
-		(*stack_2)->next = *stack_1;
-		(*stack_2)->prev = *stack_1;
-		(*stack_1)->next = *stack_2;
-		(*stack_1)->prev = *stack_2;
-		swap(*stack_2);
-	}
-	else
-	{
-		(*stack_1)->next = *stack_2;
-		(*stack_2)->prev = (*stack_2)->prev;
-		(*stack_2)->prev->next = *stack_1;
-		(*stack_2)->prev = *stack_1;
-		*stack_2 = rev_rotate(*stack_2);
-	}
-	(*stack_1) = temp->next;
-	
+	(*stack_1)->prev->next = (*stack_1)->next;
+	free(*stack_1);
+	(*stack_1) = (*stack_1)->next;
 }
 
 // need to change my add to add_back and create add_front for push test afterwards

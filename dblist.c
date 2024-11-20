@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 08:25:29 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/19 09:42:49 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:19:50 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stack	*dblstnew(int content)
 	return (new);
 }
 
-t_stack	*dblstadd(t_stack *head, int content)
+t_stack	*dblstadd_back(t_stack *head, int content)
 {
 	t_stack	*new;
 
@@ -47,6 +47,30 @@ t_stack	*dblstadd(t_stack *head, int content)
 		head->prev = new;
 	}
 	return (head);
+}
+
+t_stack	*dblstadd_front(t_stack *head, int content)
+{
+	t_stack	*new;
+
+	new = dblstnew(content);
+	if (!head)
+		head = new;
+	else if (!head->next)
+	{
+		head->next = new;
+		head->prev = new;
+		new->prev = head;
+		new->next = head;
+	}
+	else
+	{
+		head->prev->next = new;
+		new->prev = head->prev;
+		new->next = head;
+		head->prev = new;
+	}
+	return (new);
 }
 
 void	dblstdelete(t_stack *head)

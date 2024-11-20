@@ -20,7 +20,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-			
+	clear
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
