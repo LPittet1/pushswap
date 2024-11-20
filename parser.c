@@ -6,15 +6,15 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:27:27 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:18:42 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:40:51 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static	void	parsing_error(t_stack *stack, char  **tab)
+static	void	parsing_error(t_stack *stack, char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
@@ -107,6 +107,3 @@ t_stack	*parser(char **av)
 	stack_a->name = 'a';
 	return (stack_a);
 }
-
-// need to create a function that exit if error input replace all return (1) with it and free stack
-// same for check repeat
