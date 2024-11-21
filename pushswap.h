@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:27:33 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/21 08:28:31 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_stack	*dblstnew(int content);
 t_stack	*dblstadd_back(t_stack *head, int content);
 t_stack	*dblstadd_front(t_stack *head, int content);
 void	dblstdelete(t_stack *head);
+size_t	dblist_size(t_stack **stack);
 
 // operations.c
 void 	swap(t_stack *stack);

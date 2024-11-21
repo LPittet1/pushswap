@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 08:25:29 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:19:50 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/21 08:28:12 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,22 +89,23 @@ void	dblstdelete(t_stack *head)
 	free(head);
 }
 
-// int	main()
-// {
-// 	t_stack *test = NULL;
-// 	t_stack *temp;
-// 	int i =  0;
-// 	while (i < 5)
-// 	{
-// 		test = dblstadd(test, i);
-// 		i++;
-// 	}
-// 	temp = test;
-// 	while (test->next != temp)
-// 	{
-// 		printf("test = %i\n", test->content);
-// 		test = test->next;
-// 	}
-// 	printf("test = %i\n", test->content);
-// 	dblstdelete(test);
-// }
+size_t	dblist_size(t_stack **stack)
+{
+	t_stack *temp;
+	size_t	i;
+	
+	temp = *stack;
+	i = 0;
+	if (!(temp))
+		return (0);
+	if (!(temp->next))
+		return (1);
+	while (temp->next)
+	{
+		temp = temp->next;
+		i++;
+		if (temp == *stack)
+			break ;
+	}
+	return (i);
+}

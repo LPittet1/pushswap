@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:30:07 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/21 08:29:09 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int ac, char **av)
 		if (temp == stack_a)
 			break ;
 	}
+	printf("size = %lu", dblist_size(&stack_a));
 	dblstdelete(stack_a);
 	return (0);
 }
