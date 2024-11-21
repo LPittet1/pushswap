@@ -6,29 +6,32 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:06:49 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:41:31 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/21 09:05:13 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	swap(t_stack *stack)
+void	swap(t_stack **stack)
 {
 	int	temp;
 
-	temp = stack->content;
-	stack->content = stack->next->content;
-	stack->next->content = temp;
+	temp = (*stack)->content;
+	(*stack)->content = (*stack)->next->content;
+	(*stack)->next->content = temp;
+	ft_printf("sa\n");
 }
 
 void	rotate(t_stack **stack)
 {
 	(*stack) = (*stack)->next;
+	ft_printf("ra\n");
 }
 
 void	rev_rotate(t_stack **stack)
 {
 	(*stack) = (*stack)->prev;
+	ft_printf("rra\n");
 }
 
 void	push(t_stack **stack_1, t_stack **stack_2)

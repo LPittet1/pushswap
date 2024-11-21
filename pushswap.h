@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/21 08:28:31 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/21 09:05:23 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef	struct s_ab
 t_stack	*parser(char **av);
 
 // utils.c
+int	is_sorted(t_stack **stack);
 
 // dblst.c
 t_stack	*dblstnew(int content);
@@ -49,9 +50,12 @@ void	dblstdelete(t_stack *head);
 size_t	dblist_size(t_stack **stack);
 
 // operations.c
-void 	swap(t_stack *stack);
+void 	swap(t_stack **stack);
 void	rotate(t_stack **stack);
 void	rev_rotate(t_stack **stack);
 void	push(t_stack **stack_1, t_stack **stack_2);
+
+// sorting_test
+void	bubble_sort(t_stack **stack);
 
 #endif
