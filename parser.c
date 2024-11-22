@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 21:27:27 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/20 16:40:51 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 09:04:02 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,5 @@ t_stack	*parser(char **av)
 		ft_free_tab(tab, j);
 		i++;
 	}
-	stack_a->size = i;
-	stack_a->name = 'a';
 	return (stack_a);
 }
