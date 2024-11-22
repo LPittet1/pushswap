@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:06:49 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 14:48:35 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 16:01:17 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@ void	swap(t_stack **stack)
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
-	ft_printf("sa\n");
 }
 
 void	rotate(t_stack **stack)
 {
 	(*stack) = (*stack)->next;
-	ft_printf("ra\n");
 }
 
 void	rev_rotate(t_stack **stack)
 {
 	(*stack) = (*stack)->prev;
-	ft_printf("rra\n");
 }
 
 void	push(t_stack **stack_1, t_stack **stack_2)

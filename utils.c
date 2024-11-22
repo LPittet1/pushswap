@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:43:16 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 14:19:43 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 16:05:51 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int is_sorted_reverse(t_stack **stack)
 	return (i);
 }
 
-void	goto_val(t_stack **stack, int goal)
+void	goto_val_a(t_stack **stack_a, t_stack **stack_b, int goal)
 {
-	while ((*stack)->next)
+	while ((*stack_a)->next)
 	{
-		if ((*stack)->content == goal
-			|| ((*stack)->content < goal && (*stack)->prev->content > goal))
+		if ((*stack_a)->content == goal
+			|| ((*stack_a)->content < goal && (*stack_a)->prev->content > goal))
 			break ;
-		rotate(stack);
+		choose_op(stack_a, stack_b, "ra");
 	}
 }
 
@@ -75,4 +75,25 @@ void	print_stack(t_stack *stack)
 		if (stack == temp)
 			break ;
 	}
+}
+
+void	choose_op(t_stack **stack_a, t_stack **stack_b, char *op)
+{
+	if (!ft_strncmp(op, "sa", 3))
+		swap(stack_a);
+	else if (!ft_strncmp(op, "sb", 3))
+		swap(stack_b);
+	else if (!ft_strncmp(op, "ra", 3))
+		rotate(stack_a);
+	else if (!ft_strncmp(op, "rb", 3))
+		rotate(stack_b);
+	else if (!ft_strncmp(op, "rra", 4))
+		rev_rotate(stack_a);
+	else if (!ft_strncmp(op, "rrb", 4))
+		rev_rotate(stack_b);
+	else if (!ft_strncmp(op, "pa", 3))
+		push(stack_b, stack_a);
+	else if (!ft_strncmp(op, "pb", 3))
+		push(stack_a, stack_b);
+	ft_printf("%s\n", op);
 }

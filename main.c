@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 14:44:08 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 15:47:16 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	stack_a = parser(av);
 	//bubble_sort(&stack_a, &stack_b);
-	sort_5(&stack_a, &stack_b);
+	choose_sort(&stack_a, &stack_b);
 	//print_stack(stack_a);
 	//printf("a = %i\n", stack_a->content);
 	//printf("b = %i\n", stack_b->content);

@@ -6,34 +6,34 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:51:02 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 14:36:16 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 16:07:02 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	sort_3(t_stack **stack)
+void	sort_3(t_stack **stack_a, t_stack **stack_b)
 {
-	if ((*stack)->prev->content > (*stack)->content &&
-		(*stack)->prev->content < (*stack)->next->content)
+	if ((*stack_a)->prev->content > (*stack_a)->content &&
+		(*stack_a)->prev->content < (*stack_a)->next->content)
 	{
-		swap(stack);
-		rotate(stack);
+		choose_op(stack_a, stack_b, "sa");
+		choose_op(stack_a, stack_b, "ra");
 	}
-	else if ((*stack)->content > (*stack)->next->content &&
-		(*stack)->content < (*stack)->prev->content)
-		swap(stack);
-	else if ((*stack)->content < (*stack)->next->content &&
-		(*stack)->content > (*stack)->prev->content)
-		rev_rotate(stack);
-	else if ((*stack)->next->content < (*stack)->content &&
-		(*stack)->next->content > (*stack)->prev->content)
+	else if ((*stack_a)->content > (*stack_a)->next->content &&
+		(*stack_a)->content < (*stack_a)->prev->content)
+		choose_op(stack_a, stack_b, "sa");
+	else if ((*stack_a)->content < (*stack_a)->next->content &&
+		(*stack_a)->content > (*stack_a)->prev->content)
+		choose_op(stack_a, stack_b, "rra");
+	else if ((*stack_a)->next->content < (*stack_a)->content &&
+		(*stack_a)->next->content > (*stack_a)->prev->content)
 	{
-		swap(stack);
-		rev_rotate(stack);	
+		choose_op(stack_a, stack_b, "sa");
+		choose_op(stack_a, stack_b, "rra");	
 	}
 	else
-		rotate(stack);
+		choose_op(stack_a, stack_b, "ra");
 }
 
 int	find_min(t_stack **stack)
@@ -60,14 +60,12 @@ void	sort_4(t_stack **stack_a, t_stack **stack_b)
 
 	min = find_min(stack_a);
 	if ((*stack_a)->prev->content == min)
-		rev_rotate(stack_a);
+		choose_op(stack_a, stack_b, "rra");
 	else
-		goto_val(stack_a, min);
-	push(stack_a, stack_b);
-	ft_printf("pb\n");
-	sort_3(stack_a);
-	push(stack_b, stack_a);
-	ft_printf("pa\n");
+		goto_val_a(stack_a, stack_b, min);
+	choose_op(stack_a, stack_b, "pb");
+	sort_3(stack_a, stack_b);
+	choose_op(stack_a, stack_b, "pa");
 }
 
 void	sort_5(t_stack **stack_a, t_stack **stack_b)
@@ -76,12 +74,10 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b)
 
 	min = find_min(stack_a);
 	if ((*stack_a)->prev->content == min)
-		rev_rotate(stack_a);
+		choose_op(stack_a, stack_b, "rra");
 	else
-		goto_val(stack_a, min);
-	push(stack_a, stack_b);
-	ft_printf("pb\n");
+		goto_val_a(stack_a, stack_b, min);
+	choose_op(stack_a, stack_b, "pb");
 	sort_4(stack_a, stack_b);
-	push(stack_b, stack_a);
-	ft_printf("pa\n");
+	choose_op(stack_a, stack_b, "pa");
 }
