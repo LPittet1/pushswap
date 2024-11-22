@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:51:02 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 14:29:48 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 14:36:16 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ void	sort_4(t_stack **stack_a, t_stack **stack_b)
 	int	min;
 
 	min = find_min(stack_a);
-	goto_val(stack_a, min);
+	if ((*stack_a)->prev->content == min)
+		rev_rotate(stack_a);
+	else
+		goto_val(stack_a, min);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 	sort_3(stack_a);
@@ -72,7 +75,10 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b)
 	int	min;
 
 	min = find_min(stack_a);
-	goto_val(stack_a, min);
+	if ((*stack_a)->prev->content == min)
+		rev_rotate(stack_a);
+	else
+		goto_val(stack_a, min);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 	sort_4(stack_a, stack_b);
