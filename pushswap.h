@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 09:04:19 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 14:29:10 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_stack	*parser(char **av);
 int	is_sorted(t_stack **stack);
 int is_sorted_reverse(t_stack **stack);
 void	goto_val(t_stack **stack, int goal);
+void	print_stack(t_stack *stack);
 
 // dblst.c
 t_stack	*dblstnew(int content);
@@ -49,5 +50,10 @@ void	push(t_stack **stack_1, t_stack **stack_2);
 
 // sorting_test
 void	bubble_sort(t_stack **stack_a, t_stack **stack_b);
+
+// minisort.c
+void	sort_3(t_stack **stack);
+void	sort_4(t_stack **stack_a, t_stack **stack_b);
+void	sort_5(t_stack **stack_a, t_stack **stack_b);
 
 #endif

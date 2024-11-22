@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:43:16 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/21 13:44:17 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 14:19:43 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,25 @@ int is_sorted_reverse(t_stack **stack)
 
 void	goto_val(t_stack **stack, int goal)
 {
+	while ((*stack)->next)
+	{
+		if ((*stack)->content == goal
+			|| ((*stack)->content < goal && (*stack)->prev->content > goal))
+			break ;
+		rotate(stack);
+	}
+}
+
+void	print_stack(t_stack *stack)
+{
 	t_stack	*temp;
 
-	temp = *stack;
-	while (temp->next)
+	temp = stack;
+	while (stack->next)
 	{
-		if (temp->content < goal && temp->prev->content > goal)
-			break;
-		rotate(stack);
-		if (temp == *stack)
+		printf("%i\n", stack->content);
+		stack = stack->next;
+		if (stack == temp)
 			break ;
 	}
 }
