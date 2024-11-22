@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:30:51 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 15:59:40 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/22 16:26:53 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	choose_sort(t_stack **stack_a, t_stack **stack_b)
 	size = dblist_size(stack_a);
 	if (!is_sorted(stack_a))
 		return ;
-	if (size < 2)
-		swap(stack_a);
+	if (size == 2)
+		choose_op(stack_a, stack_b, "sa");
 	else if (size == 3)
 		sort_3(stack_a, stack_b);
 	else if (size == 4)
