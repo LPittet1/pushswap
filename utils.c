@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:43:16 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 16:05:51 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/25 10:10:49 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	print_stack(t_stack *stack)
 	temp = stack;
 	while (stack->next)
 	{
-		printf("%i\n", stack->content);
+		printf("%i\t%u\n", stack->content, stack->index);
 		stack = stack->next;
 		if (stack == temp)
 			break ;

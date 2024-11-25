@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = main.c parser.c utils.c dblist.c operations.c test_sort.c minisort.c
+SRCS = main.c parser.c utils.c dblist.c operations.c test_sort.c minisort.c radix_utils.c
 
 LIBFT_PATH = libft1
 

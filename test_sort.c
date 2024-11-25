@@ -6,17 +6,14 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:30:51 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 16:26:53 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/25 09:42:16 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	choose_sort(t_stack **stack_a, t_stack **stack_b)
+void	choose_sort(t_stack **stack_a, t_stack **stack_b, size_t size)
 {
-	size_t	size;
-	
-	size = dblist_size(stack_a);
 	if (!is_sorted(stack_a))
 		return ;
 	if (size == 2)
@@ -27,4 +24,8 @@ void	choose_sort(t_stack **stack_a, t_stack **stack_b)
 		sort_4(stack_a, stack_b);
 	else if (size == 5)
 		sort_5(stack_a, stack_b);
+	else
+	{
+		get_final_index(stack_a, size);
+	}
 }

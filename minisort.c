@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:51:02 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/22 16:07:02 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/25 09:48:09 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,11 @@ void	sort_3(t_stack **stack_a, t_stack **stack_b)
 		choose_op(stack_a, stack_b, "ra");
 }
 
-int	find_min(t_stack **stack)
-{
-	int		min;
-	t_stack	*temp;
-
-	min = INT_MAX;
-	temp = *stack;
-	while ((*stack)->next)
-	{
-		if ((*stack)->content < min)
-			min = (*stack)->content;
-		(*stack) = (*stack)->next;
-		if (temp == *stack)
-			break ;
-	}
-	return (min);
-}
-
 void	sort_4(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
 
-	min = find_min(stack_a);
+	min = find_min(stack_a, INT_MIN);
 	if ((*stack_a)->prev->content == min)
 		choose_op(stack_a, stack_b, "rra");
 	else
@@ -72,7 +54,7 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
 
-	min = find_min(stack_a);
+	min = find_min(stack_a, INT_MIN);
 	if ((*stack_a)->prev->content == min)
 		choose_op(stack_a, stack_b, "rra");
 	else
