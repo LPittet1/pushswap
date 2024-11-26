@@ -2,9 +2,9 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
-SRCS = main.c parser.c utils.c dblist.c operations.c test_sort.c minisort.c radix_utils.c
+SRCS = main.c parser.c utils.c dblist.c operations.c test_sort.c minisort.c radix_utils.c #radix.c
 
 LIBFT_PATH = libft1
 
@@ -20,6 +20,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
+	$(MAKE) clean
 	clear
 
 $(LIBFT):

@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/25 10:00:11 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/26 10:03:42 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	int				content;
 	unsigned int	index;
+	int				modulo;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -61,5 +62,9 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b);
 // radix_utils.c
 void	get_final_index(t_stack **stack, size_t size);
 int		find_min(t_stack **stack, int last);
+void	go_to_val_b(t_stack **stack_a, t_stack **stack_b, int modulo);
+int		in_stack(t_stack **stack, int modulo);
+
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif

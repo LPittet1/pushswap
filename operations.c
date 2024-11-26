@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:06:49 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/25 10:46:03 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/25 14:56:28 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	push(t_stack **stack_1, t_stack **stack_2)
 	t_stack *temp;
 	
 	(*stack_2) = dblstadd_front((*stack_2), (*stack_1)->content);
+	(*stack_2)->index = (*stack_1)->index;
+	(*stack_2)->modulo = (*stack_1)->modulo;
 	temp = *stack_1;
 	if (dblist_size(stack_1) > 2)
 	{

@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:43:25 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/25 10:17:30 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/26 10:13:30 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void	set_index(t_stack **stack, int min, unsigned int index)
 	while ((*stack)->next)
 	{
 		if ((*stack)->content == min)
+		{
 			(*stack)->index = index;
+			(*stack)->modulo = index % 10;
+		}
 		(*stack) = (*stack)->next;
 		if (temp == *stack)
 			break ;
@@ -32,10 +35,9 @@ void	get_final_index(t_stack **stack, size_t size)
 	size_t	i;
 	int 	min;
 
-	i = 1;
+	i = 0;
 	min = INT_MIN;
-	ft_printf("size = %i\n", size);
-	while (i <= size)
+	while (i < size)
 	{
 		min = find_min(stack, min);
 		set_index(stack, min, i);
@@ -61,3 +63,47 @@ int	find_min(t_stack **stack, int last)
 	}
 	return (min);
 }
+
+void	go_to_val_b(t_stack **stack_a, t_stack **stack_b, int modulo)
+{
+	if ((*stack_b)->modulo - modulo > 5
+		|| (*stack_b)->modulo - modulo < -5)
+	{
+		while (*stack_b)
+		{
+			choose_op(stack_a, stack_b, "rrb");
+			if (((*stack_b)->prev->modulo > modulo + 1
+				&& (*stack_b)->modulo <= modulo))
+				break ;
+		}
+	}
+	else
+	{
+		while (*stack_b)
+		{
+			choose_op(stack_a, stack_b, "rb");
+			if (((*stack_b)->prev->modulo > modulo + 1
+				&& (*stack_b)->modulo <= modulo))
+				break ;
+		}
+	}
+}
+
+int	in_stack(t_stack **stack, int modulo)
+{
+	int	i;
+	t_stack *temp;
+
+	i = 0;
+	temp = *stack;
+	while (*stack)
+	{
+		if ((*stack)->modulo == modulo)
+			i++;
+		(*stack) = (*stack)->next;
+		if (*stack == temp)
+			break ;
+	}
+	return (i);
+}
+// TODO changer les conditions des boucles while pour s'assurer que ca marche quand les valeurs ne sont pas exactes
