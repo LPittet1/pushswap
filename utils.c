@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:43:16 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/26 14:25:35 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:17:36 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	is_sorted(t_stack **stack)
 {
-	int i;
-	t_stack *temp;
-	
+	int		i;
+	t_stack	*temp;
+
 	i = 0;
 	temp = *stack;
 	if (dblist_size(stack) <= 1)
@@ -32,11 +32,11 @@ int	is_sorted(t_stack **stack)
 	return (i);
 }
 
-int is_sorted_reverse(t_stack **stack)
+int	is_sorted_reverse(t_stack **stack)
 {
-	int i;
-	t_stack *temp;
-	
+	int		i;
+	t_stack	*temp;
+
 	i = 0;
 	temp = *stack;
 	if (dblist_size(stack) <= 1)

@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 08:25:29 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/21 08:28:12 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:11:54 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	dblstdelete(t_stack *head)
 
 size_t	dblist_size(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 	size_t	i;
-	
+
 	temp = *stack;
 	i = 0;
 	if (!(temp))

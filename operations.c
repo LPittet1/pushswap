@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:06:49 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/25 14:56:28 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:14:02 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	rev_rotate(t_stack **stack)
 
 void	push(t_stack **stack_1, t_stack **stack_2)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	(*stack_2) = dblstadd_front((*stack_2), (*stack_1)->content);
 	(*stack_2)->index = (*stack_1)->index;
 	(*stack_2)->modulo = (*stack_1)->modulo;

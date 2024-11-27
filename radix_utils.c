@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:43:25 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/26 10:13:30 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:16:09 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_index(t_stack **stack, int min, unsigned int index)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *stack;
 	while ((*stack)->next)
@@ -33,7 +33,7 @@ static void	set_index(t_stack **stack, int min, unsigned int index)
 void	get_final_index(t_stack **stack, size_t size)
 {
 	size_t	i;
-	int 	min;
+	int		min;
 
 	i = 0;
 	min = INT_MIN;
@@ -64,35 +64,10 @@ int	find_min(t_stack **stack, int last)
 	return (min);
 }
 
-void	go_to_val_b(t_stack **stack_a, t_stack **stack_b, int modulo)
-{
-	if ((*stack_b)->modulo - modulo > 5
-		|| (*stack_b)->modulo - modulo < -5)
-	{
-		while (*stack_b)
-		{
-			choose_op(stack_a, stack_b, "rrb");
-			if (((*stack_b)->prev->modulo > modulo + 1
-				&& (*stack_b)->modulo <= modulo))
-				break ;
-		}
-	}
-	else
-	{
-		while (*stack_b)
-		{
-			choose_op(stack_a, stack_b, "rb");
-			if (((*stack_b)->prev->modulo > modulo + 1
-				&& (*stack_b)->modulo <= modulo))
-				break ;
-		}
-	}
-}
-
 int	in_stack(t_stack **stack, int modulo)
 {
-	int	i;
-	t_stack *temp;
+	int		i;
+	t_stack	*temp;
 
 	i = 0;
 	temp = *stack;
@@ -106,4 +81,18 @@ int	in_stack(t_stack **stack, int modulo)
 	}
 	return (i);
 }
-// TODO changer les conditions des boucles while pour s'assurer que ca marche quand les valeurs ne sont pas exactes
+
+void	update_stack(t_stack **stack)
+{
+	t_stack	*temp;
+
+	temp = *stack;
+	while (1)
+	{
+		(*stack)->index /= 10;
+		(*stack)->modulo = (*stack)->index % 10;
+		*stack = (*stack)->next;
+		if (*stack == temp)
+			break ;
+	}
+}

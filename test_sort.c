@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:30:51 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/26 14:25:58 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:16:48 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	choose_sort(t_stack **stack_a, t_stack **stack_b, size_t size)
 	else
 	{
 		get_final_index(stack_a, size);
-		//radix_sort(stack_a, stack_b);
+		radix_sort_tob(stack_a, stack_b);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 10:51:02 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/25 09:48:09 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:13:40 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	sort_3(t_stack **stack_a, t_stack **stack_b)
 {
-	if ((*stack_a)->prev->content > (*stack_a)->content &&
-		(*stack_a)->prev->content < (*stack_a)->next->content)
+	if ((*stack_a)->prev->content > (*stack_a)->content
+		&& (*stack_a)->prev->content < (*stack_a)->next->content)
 	{
 		choose_op(stack_a, stack_b, "sa");
 		choose_op(stack_a, stack_b, "ra");
 	}
-	else if ((*stack_a)->content > (*stack_a)->next->content &&
-		(*stack_a)->content < (*stack_a)->prev->content)
+	else if ((*stack_a)->content > (*stack_a)->next->content
+		&& (*stack_a)->content < (*stack_a)->prev->content)
 		choose_op(stack_a, stack_b, "sa");
-	else if ((*stack_a)->content < (*stack_a)->next->content &&
-		(*stack_a)->content > (*stack_a)->prev->content)
+	else if ((*stack_a)->content < (*stack_a)->next->content
+		&& (*stack_a)->content > (*stack_a)->prev->content)
 		choose_op(stack_a, stack_b, "rra");
-	else if ((*stack_a)->next->content < (*stack_a)->content &&
-		(*stack_a)->next->content > (*stack_a)->prev->content)
+	else if ((*stack_a)->next->content < (*stack_a)->content
+		&& (*stack_a)->next->content > (*stack_a)->prev->content)
 	{
 		choose_op(stack_a, stack_b, "sa");
-		choose_op(stack_a, stack_b, "rra");	
+		choose_op(stack_a, stack_b, "rra");
 	}
 	else
 		choose_op(stack_a, stack_b, "ra");
