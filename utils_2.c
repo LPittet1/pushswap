@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:30:51 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 16:12:11 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:31:03 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	choose_sort(t_stack **stack_a, t_stack **stack_b, size_t size)
 	else
 	{
 		get_final_index(stack_a, size);
-		radix_sort_tob(stack_a, stack_b);
+		radix_sort_tob(stack_a, stack_b, 9, 0);
 	}
 }
 
@@ -62,27 +62,26 @@ char	*best_op(t_stack **stack, t_stack *head, size_t i)
 
 void	finish(t_stack **a, t_stack **b)
 {
-	char *op;
+	// char *op;
 	
 	if (!*a)
 	{
 		if (!is_sorted_reverse(b))
 		{
-			op = best_op(b, *b, 0);
-			ft_strlcat(op, "b", 4);
-			ft_printf("op = %s\n", op);
+			// op = best_op(b, *b, 0);
+			// ft_printf("op = %s\n", op);
 			while (is_sorted_reverse(b))
-				choose_op(a, b, op);
+				choose_op(a, b, "rb");
 			while (*b)
 				choose_op(a, b, "pa");
 		}
 	}
 	else if (!*b)
 	{
-		op = best_op(a, *a, 0);
-		ft_strlcat(op, "a", 4);
-		ft_printf("op = %s\n", op);
+		// op = best_op(a, *a, 0);
+		// ft_strlcat(op, "a", 4);
+		// ft_printf("op = %s\n", "ra");
 		while (is_sorted(a))
-			choose_op(a, b, op);
+			choose_op(a, b, "ra");
 	}
 }

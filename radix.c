@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:24:22 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 15:42:47 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:30:10 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,8 @@ static void	go_to_val_out_b(t_stack **a, t_stack **b, int min, int max)
 	}
 }
 
-void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b)
+void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b, int min, int max)
 {
-	int	min;
-	int	max;
-
-	min = 9;
-	max = 0;
 	if (is_sorted(stack_a) <= 1)
 	{
 		finish(stack_a, stack_b);
@@ -73,5 +68,5 @@ void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b)
 			min = (*stack_b)->modulo;
 	}
 	update_stack(stack_b);
-	radix_sort_toa(stack_a, stack_b);
+	radix_sort_toa(stack_a, stack_b, 9, 0);
 }

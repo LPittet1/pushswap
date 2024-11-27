@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 15:41:41 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:30:43 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int		in_stack(t_stack **stack, int modulo);
 void	update_stack(t_stack **stack);
 
 // radix_2.c
-void	radix_sort_toa(t_stack **stack_a, t_stack **stack_b);
+void	radix_sort_toa(t_stack **stack_a, t_stack **stack_b, int min, int max);
 
 // radix.c
-void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b);
+void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b, int min, int max);
 
 #endif
