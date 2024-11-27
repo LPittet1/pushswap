@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:43:16 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 10:17:36 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:59:10 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ void	print_stack(t_stack *stack)
 	t_stack	*temp;
 
 	temp = stack;
+	if (!stack)
+		return ;
+	if (!(stack->next))
+		printf("%i\t%u\n", stack->content, stack->index);
 	while (stack->next)
 	{
 		printf("%i\t%u\n", stack->content, stack->index);
@@ -95,5 +99,6 @@ void	choose_op(t_stack **stack_a, t_stack **stack_b, char *op)
 		push(stack_b, stack_a);
 	else if (!ft_strncmp(op, "pb", 3))
 		push(stack_a, stack_b);
-	ft_printf("%s\n", op);
+	write(1, op, ft_strlen(op));
+	write(1, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 17:35:36 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 10:14:38 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:41:41 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ void	rotate(t_stack **stack);
 void	rev_rotate(t_stack **stack);
 void	push(t_stack **stack_1, t_stack **stack_2);
 
-// sorting_test
+// utils_2.c
 void	choose_sort(t_stack **stack_a, t_stack **stack_b, size_t size);
+void	finish(t_stack **a, t_stack **b);
 
 // minisort.c
 void	sort_3(t_stack **stack_a, t_stack **stack_b);
@@ -62,9 +63,13 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b);
 // radix_utils.c
 void	get_final_index(t_stack **stack, size_t size);
 int		find_min(t_stack **stack, int last);
-void	go_to_val_b(t_stack **stack_a, t_stack **stack_b, int modulo);
 int		in_stack(t_stack **stack, int modulo);
+void	update_stack(t_stack **stack);
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b);
+// radix_2.c
+void	radix_sort_toa(t_stack **stack_a, t_stack **stack_b);
+
+// radix.c
+void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b);
 
 #endif

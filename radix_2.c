@@ -6,31 +6,31 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:57:30 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 10:14:59 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:43:54 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	go_to_val_in_a(t_stack **a, t_stack **b, int modulo)
+static void	go_to_val_in_a(t_stack **a, t_stack **b, int goal)
 {
 	if (!(*a) || !((*a)->next))
 		return ;
-	else if (abs((*a)->modulo - modulo) <= 5)
+	else if ((*a)->modulo - goal <= 5 )
 	{
-		while (!((*a)->modulo == modulo
-				&& (*a)->prev->modulo != modulo))
+		while (!((*a)->modulo == goal
+				&& (*a)->prev->modulo != goal))
 			choose_op(a, b, "rra");
 	}
 	else
 	{
-		while (!((*a)->modulo == modulo
-				&& (*a)->prev->modulo != modulo))
+		while (!((*a)->modulo == goal
+				&& (*a)->prev->modulo != goal))
 			choose_op(a, b, "ra");
 	}
 }
 
-void	go_to_val_out_a(t_stack **a, t_stack **b, int min, int max)
+static void	go_to_val_out_a(t_stack **a, t_stack **b, int min, int max)
 {
 	if ((*b)->modulo > max || (*b)->modulo < min)
 		go_to_val_in_a(a, b, min);
@@ -55,6 +55,11 @@ void	radix_sort_toa(t_stack **stack_a, t_stack **stack_b)
 
 	min = 9;
 	max = 0;
+	if (is_sorted_reverse(stack_b) <= 1)
+	{
+		finish(stack_a, stack_b);
+		return ;
+	}
 	while (*stack_b)
 	{
 		if (in_stack(stack_a, (*stack_b)->modulo))

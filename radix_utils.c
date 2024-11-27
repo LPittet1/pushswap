@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:43:25 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 10:16:09 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:21:16 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	in_stack(t_stack **stack, int modulo)
 
 	i = 0;
 	temp = *stack;
+	if (!(*stack) || !(*stack)->next)
+		return (0);
 	while (*stack)
 	{
 		if ((*stack)->modulo == modulo)
