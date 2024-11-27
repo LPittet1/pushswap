@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 08:30:51 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 16:31:03 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 20:12:00 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,57 +31,71 @@ void	choose_sort(t_stack **stack_a, t_stack **stack_b, size_t size)
 	}
 }
 
-char	*best_op(t_stack **stack, t_stack *head, size_t i)
+char	*best_op_b(t_stack **stack)
 {
-	while (1)
+	size_t	i;
+	t_stack	*temp;
+
+	i = 0;
+	temp = *stack;
+	while ((*stack)->content < (*stack)->prev->content)
 	{
-		if ((*stack)->content > (*stack)->next->content)
-		{
-			while ((*stack)->content > (*stack)->next->content)
-			{
-				*stack = (*stack)->next;
-				i++;
-			}
-		}
-		else
-		{
-			while ((*stack)->content < (*stack)->next->content)
-			{
-				*stack = (*stack)->next;
-				i++;
-			}
-		}
+		i++;
 		*stack = (*stack)->next;
-		if (*stack == head)
+	}
+	while ((*stack)->next)
+	{
+		*stack = (*stack)->next;
+		if (*stack == temp)
 			break ;
 	}
 	if (i > dblist_size(stack) / 2)
-		return ("rr");
-	return ("r");
+		return ("rrb");
+	return ("rb");
+}
+
+char	*best_op_a(t_stack **stack)
+{
+	size_t i;
+	t_stack *temp;
+
+	i = 0;
+	temp = *stack;
+	while ((*stack)->content > (*stack)->prev->content)
+	{
+		i++;
+		*stack = (*stack)->next;
+	}
+	while ((*stack)->next)
+	{
+		*stack = (*stack)->next;
+		if (*stack == temp)
+			break ;
+	}
+	if (i > dblist_size(stack) / 2)
+		return ("rra");
+	return ("ra");
 }
 
 void	finish(t_stack **a, t_stack **b)
 {
-	// char *op;
+	char *op;
 	
 	if (!*a)
 	{
-		if (!is_sorted_reverse(b))
+		if (is_sorted_reverse(b))
 		{
-			// op = best_op(b, *b, 0);
-			// ft_printf("op = %s\n", op);
+			op = best_op_b(b);
 			while (is_sorted_reverse(b))
-				choose_op(a, b, "rb");
-			while (*b)
-				choose_op(a, b, "pa");
+				choose_op(a, b, op);
 		}
+		while (*b)
+				choose_op(a, b, "pa");
 	}
 	else if (!*b)
 	{
-		// op = best_op(a, *a, 0);
-		// ft_strlcat(op, "a", 4);
-		// ft_printf("op = %s\n", "ra");
+		op = best_op_a(a);
 		while (is_sorted(a))
-			choose_op(a, b, "ra");
+			choose_op(a, b, op);
 	}
 }

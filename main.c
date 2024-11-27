@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:06:21 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 14:14:45 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/27 20:23:33 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	size = dblist_size(&stack_a);
 	//bubble_sort(&stack_a, &stack_b);
 	choose_sort(&stack_a, &stack_b, size);
+	//print_stack(stack_a);
 	//printf("a = %i\n", stack_a->content);
 	//printf("b = %i\n", stack_b->content);
 	dblstdelete(stack_a);
