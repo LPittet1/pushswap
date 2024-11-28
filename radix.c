@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:24:22 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 19:42:49 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/28 14:15:36 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,47 @@
 
 static void	go_to_val_in_b(t_stack **a, t_stack **b, int goal)
 {
+	int	dir;
+	int	i;
+
+	dir = 0;
+	i = 0;
 	if (!(*b) || !((*b)->next))
 		return ;
-	else if ((*b)->modulo - goal <= 5 && (*b)->modulo - goal >= -5)
+	while (i < 5)
 	{
-	while (!((*b)->modulo == goal && (*b)->prev->modulo != goal))
-		choose_op(a, b, "rrb");
+		if (((*b)->modulo + i) % 10 == goal)
+			dir = 1;
+		i++;
+	}
+	if (dir)
+	{
+		while (!((*b)->modulo == goal && (*b)->prev->modulo != goal))
+			choose_op(a, b, "rrb");
 	}
 	else
 	{
-		while (!((*b)->modulo == (*a)->modulo && (*b)->prev->modulo != goal))
+		while (!((*b)->modulo == goal && (*b)->prev->modulo != goal))
 			choose_op(a, b, "rb");
 	}
 }
 
 static void	go_to_val_out_b(t_stack **a, t_stack **b, int min, int max)
 {
+	int	dir;
+	int	i;
+
+	dir = 0;
+	i = 0;
 	if ((*a)->modulo > max || (*a)->modulo < min)
+		return (go_to_val_in_b(a, b, max));
+	while (i < 5)
 	{
-		go_to_val_in_b(a, b, max);
+		if (((*b)->modulo + i) % 10 == (*a)->modulo)
+			dir = 1;
+		i++;
 	}
-	else if ((*b)->modulo - (*a)->modulo <= 5 && (*b)->modulo - (*a)->modulo >= -5)
+	if (dir)
 	{
 		while (!((*b)->modulo < (*a)->modulo
 				&& (*b)->prev->modulo > (*a)->modulo))
@@ -67,6 +87,8 @@ void	radix_sort_tob(t_stack **stack_a, t_stack **stack_b, int min, int max)
 		if ((*stack_b)->modulo < min)
 			min = (*stack_b)->modulo;
 	}
+	while (!((*stack_b)->modulo == max))
+		choose_op(stack_a, stack_b, "rb");
 	update_stack(stack_b);
 	radix_sort_toa(stack_a, stack_b, 9, 0);
 }
