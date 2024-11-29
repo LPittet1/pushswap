@@ -6,7 +6,7 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:43:25 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/27 14:21:16 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/29 10:35:36 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	get_final_index(t_stack **stack, size_t size)
 	size_t	i;
 	int		min;
 
-	i = 0;
+	i = 1;
 	min = INT_MIN;
-	while (i < size)
+	while (i <= size)
 	{
 		min = find_min(stack, min);
 		set_index(stack, min, i);
@@ -64,37 +64,37 @@ int	find_min(t_stack **stack, int last)
 	return (min);
 }
 
-int	in_stack(t_stack **stack, int modulo)
+int	get_msb(size_t size)
 {
-	int		i;
-	t_stack	*temp;
+	int	i;
 
 	i = 0;
-	temp = *stack;
-	if (!(*stack) || !(*stack)->next)
-		return (0);
-	while (*stack)
+	while (size)
 	{
-		if ((*stack)->modulo == modulo)
-			i++;
-		(*stack) = (*stack)->next;
-		if (*stack == temp)
-			break ;
+		size /= 2;
+		i++;
 	}
 	return (i);
 }
 
-void	update_stack(t_stack **stack)
+void	choose_sort(t_stack **stack_a, t_stack **stack_b, size_t size)
 {
-	t_stack	*temp;
+	int	msb;
 
-	temp = *stack;
-	while (1)
+	if (!is_sorted(stack_a))
+		return ;
+	if (size == 2)
+		choose_op(stack_a, stack_b, "sa");
+	else if (size == 3)
+		sort_3(stack_a, stack_b);
+	else if (size == 4)
+		sort_4(stack_a, stack_b);
+	else if (size == 5)
+		sort_5(stack_a, stack_b);
+	else
 	{
-		(*stack)->index /= 10;
-		(*stack)->modulo = (*stack)->index % 10;
-		*stack = (*stack)->next;
-		if (*stack == temp)
-			break ;
+		get_final_index(stack_a, size);
+		msb = get_msb(size);
+		radix_bin(stack_a, stack_b, msb);
 	}
 }
