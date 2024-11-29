@@ -6,13 +6,13 @@
 /*   By: lpittet <lpittet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 08:40:47 by lpittet           #+#    #+#             */
-/*   Updated: 2024/11/29 10:35:17 by lpittet          ###   ########.fr       */
+/*   Updated: 2024/11/29 13:32:35 by lpittet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	radix_bin_a(t_stack **a, t_stack **b, int mask, size_t len)
+static	void	radix_bin_a(t_stack **a, t_stack **b, int mask, size_t len)
 {
 	while (len)
 	{
@@ -24,7 +24,7 @@ void	radix_bin_a(t_stack **a, t_stack **b, int mask, size_t len)
 	}
 }
 
-void	radix_bin_b(t_stack **a, t_stack **b, int mask, size_t len)
+static	void	radix_bin_b(t_stack **a, t_stack **b, int mask, size_t len)
 {
 	size_t	new_len;
 

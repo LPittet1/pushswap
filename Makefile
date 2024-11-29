@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-SRCS = main.c parser.c utils.c dblist.c operations.c minisort.c radix_utils.c radix_bin.c
+SRCS = main.c parser.c utils.c dblist.c operations.c radix_utils.c radix_bin.c insert.c
 
 LIBFT_PATH = libft1
 
@@ -20,8 +20,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
-	$(MAKE) clean
-	clear
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -29,12 +27,10 @@ $(LIBFT):
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) clean -C $(LIBFT_PATH)
-	clear
 
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) fclean -C $(LIBFT_PATH)
-	clear
 
 re: fclean all
 	clear
